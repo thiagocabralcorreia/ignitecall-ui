@@ -1,5 +1,5 @@
 {
-  "name": "@ignitecall-ui/tokens",
+  "name": "@ignitecall-ui/react",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -14,6 +14,7 @@
   "author": "thiagocabralcorreia",
   "license": "MIT",
   "devDependencies": {
+    "@ignite-ui/tokens": "*",
     "@ignitecall-ui/ts-config": "*",
     "@ignitecall-ui/eslint-config": "*",
     "tsup": "^6.7.0",
