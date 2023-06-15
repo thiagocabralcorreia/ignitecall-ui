@@ -25,5 +25,11 @@
     "react-dom": "^18.2.0",
     "storybook": "^7.0.20",
     "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "@ignitecall-ui/eslint-config": "*",
+    "@ignitecall-ui/react": "*",
+    "@ignitecall-ui/tokens": "*",
+    "@ignitecall-ui/ts-config": "*"
   }
 }
