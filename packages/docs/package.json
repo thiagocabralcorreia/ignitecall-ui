@@ -30,6 +30,10 @@
     "@ignitecall-ui/eslint-config": "*",
     "@ignitecall-ui/react": "*",
     "@ignitecall-ui/tokens": "*",
-    "@ignitecall-ui/ts-config": "*"
+    "@ignitecall-ui/ts-config": "*",
+    "@storybook/addon-docs": "^7.0.21",
+    "@storybook/addons": "^7.0.21",
+    "@storybook/theming": "^7.0.21",
+    "polished": "^4.2.2"
   }
 }

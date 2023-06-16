@@ -1,3 +1,3 @@
-import { colors } from '@ignitecall-ui/tokens'
+export * from "./components/Text";
 
-console.log(colors)
+export * from "./styles";
