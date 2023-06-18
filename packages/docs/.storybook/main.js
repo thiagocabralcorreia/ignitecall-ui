@@ -24,5 +24,12 @@ const config = {
   features: {
     storyStoreV7: true,
   },
+  viteFinal: (config, { configType }) => {
+    if (configType === "PRODUCTION") {
+      config.base = "/ignitecall-ui/";
+    }
+
+    return config;
+  },
 };
 export default config;
