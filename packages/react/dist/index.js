@@ -1,10 +1,12 @@
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
@@ -20,6 +22,18 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -32,14 +46,28 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.tsx
 var src_exports = {};
 __export(src_exports, {
+  Avatar: () => Avatar2,
   Box: () => Box,
+  Button: () => Button,
+  Checkbox: () => Checkbox2,
   Heading: () => Heading,
+  MultiStep: () => MultiStep,
   Text: () => Text,
+  TextArea: () => TextArea,
+  TextInput: () => TextInput,
   config: () => config,
   createTheme: () => createTheme,
   css: () => css,
@@ -213,11 +241,327 @@ var Box = styled("div", {
   border: "1px solid $gray600"
 });
 Box.displayName = "Box";
+
+// src/components/Button.tsx
+var Button = styled("button", {
+  all: "unset",
+  borderRadius: "$sm",
+  fontSize: "$sm",
+  fontWeight: "$medium",
+  fontFamily: "$default",
+  textAlign: "center",
+  minWidth: 120,
+  boxSizing: "border-box",
+  padding: "0 $4",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  cursor: "pointer",
+  svg: {
+    width: "$4",
+    height: "$4"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 2px $colors$gray100"
+  },
+  variants: {
+    variant: {
+      primary: {
+        color: "$white",
+        background: "$ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite300"
+        },
+        "&:disabled": {
+          backgroundColor: "$gray200"
+        }
+      },
+      secondary: {
+        color: "$ignite300",
+        border: "2px solid $ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite500",
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray200",
+          borderColor: "$gray200"
+        }
+      },
+      tertiary: {
+        color: "$gray100",
+        "&:not(:disabled):hover": {
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray600"
+        }
+      }
+    },
+    size: {
+      sm: {
+        height: 38
+      },
+      md: {
+        height: 46
+      }
+    }
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md"
+  }
+});
+Button.displayName = "Button";
+
+// src/components/Avatar.tsx
+var import_phosphor_react = require("phosphor-react");
+
+// src/styles/Avatar.ts
+var Avatar = __toESM(require("@radix-ui/react-avatar"));
+var AvatarContainer = styled(Avatar.Root, {
+  borderRadius: "$full",
+  display: "inline-block",
+  width: "$16",
+  height: "$16",
+  overflow: "hidden"
+});
+var AvatarImage = styled(Avatar.Image, {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  borderRadius: "inherit"
+});
+var AvatarFallback = styled(Avatar.Fallback, {
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  alignContent: "center",
+  justifyContent: "center",
+  backgroundColor: "$gray600",
+  color: "$gray800",
+  svg: {
+    width: "$10",
+    height: "$10"
+  }
+});
+
+// src/components/Avatar.tsx
+var import_jsx_runtime = require("react/jsx-runtime");
+function Avatar2(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AvatarContainer, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarImage, __spreadValues({}, props)),
+    /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, { delayMs: 600, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_phosphor_react.User, {}) })
+  ] });
+}
+Avatar2.displayName = "Avatar";
+
+// src/styles/Checkbox.ts
+var Checkbox = __toESM(require("@radix-ui/react-checkbox"));
+var CheckBoxContainer = styled(Checkbox.Root, {
+  all: "unset",
+  width: "$6",
+  height: "$6",
+  backgroundColor: "$gray900",
+  borderRadius: "$xs",
+  lineHeight: 0,
+  cursor: "pointer",
+  overflow: "hidden",
+  boxSizing: "border-box",
+  display: "flex",
+  justifyContent: "center",
+  alignContent: "center",
+  border: "2px solid $ignite300",
+  '&[data-state="checked"]': {
+    backgroundColor: "$ignite300"
+  },
+  '&:focus, &[data-state="checked"]': {
+    border: "2px solid $ignite300"
+  }
+});
+var SlideIn = keyframes({
+  from: { transform: "translateY(-100%)" },
+  to: { transform: "translateY(0)" }
+});
+var SlideOut = keyframes({
+  from: { transform: "translateY(0)" },
+  to: { transform: "translateY(-100%)" }
+});
+var CheckBoxIndicator = styled(Checkbox.Indicator, {
+  color: "$white",
+  width: "$5",
+  height: "$5",
+  '&[data-state="checked"]': {
+    animation: `${SlideIn} 200ms ease-out`
+  },
+  '&[data-state="unchecked"]': {
+    animation: `${SlideOut} 200ms ease-out`
+  }
+});
+
+// src/components/Checkbox.tsx
+var import_phosphor_react2 = require("phosphor-react");
+var import_jsx_runtime2 = require("react/jsx-runtime");
+function Checkbox2(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CheckBoxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CheckBoxIndicator, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_phosphor_react2.Check, { weight: "bold" }) }) }));
+}
+Checkbox2.displayName = "Checkbox";
+
+// src/styles/MultiStep.ts
+var MultiStepContainer = styled("div", {});
+var Label = styled(Text, {
+  color: "$gray200",
+  defaultVariants: {
+    size: "xs"
+  }
+});
+var Steps = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "repeat(var(--steps-size), 1fr)",
+  gap: "$2",
+  marginTop: "$1"
+});
+var Step = styled("div", {
+  height: "$1",
+  borderRadius: "$px",
+  backgroundColor: "$gray600",
+  variants: {
+    active: {
+      true: {
+        backgroundColor: "$gray100"
+      }
+    }
+  }
+});
+
+// src/components/MultiStep.tsx
+var import_jsx_runtime3 = require("react/jsx-runtime");
+function MultiStep({ size, currentStep = 1 }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(MultiStepContainer, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(Label, { children: [
+      "Passo ",
+      currentStep,
+      " de ",
+      size
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Steps, { css: { "--steps-size": size }, children: Array.from({ length: size }, (_, i) => i + 1).map((step) => {
+      return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Step, { active: currentStep >= step }, step);
+    }) })
+  ] });
+}
+MultiStep.displayName = "MultiStep";
+
+// src/components/TextInput.tsx
+var import_react2 = require("react");
+
+// src/styles/TextInput.ts
+var TextInputContainer = styled("div", {
+  backgroundColor: "$gray900",
+  borderRadius: "$sm",
+  boxSizing: "border-box",
+  border: "2px solid $gray900",
+  display: "flex",
+  alignItems: "center",
+  variants: {
+    size: {
+      sm: {
+        padding: "$2 $3"
+      },
+      md: {
+        padding: "$3 $4"
+      }
+    }
+  },
+  "&:has(input:focus)": {
+    borderColor: "$ignite300"
+  },
+  "&:has(input:disabled)": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+var Prefix = styled("span", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$gray400",
+  fontWeight: "regular"
+});
+var Input = styled("input", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$white",
+  fontWeight: "regular",
+  background: "transparent",
+  border: 0,
+  width: "100%",
+  "&:focus": {
+    outline: 0
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  "&::placeholder": {
+    color: "$gray400"
+  }
+});
+
+// src/components/TextInput.tsx
+var import_jsx_runtime4 = require("react/jsx-runtime");
+var TextInput = (0, import_react2.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(TextInputContainer, { children: [
+      !!prefix && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Prefix, { children: prefix }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Input, __spreadValues({ ref }, props))
+    ] });
+  }
+);
+TextInput.displayName = "TextInput";
+
+// src/components/TextArea.tsx
+var TextArea = styled("textarea", {
+  backgroundColor: "$gray900",
+  padding: "$3 $4",
+  borderRadius: "$sm",
+  boxSizing: "border-box",
+  border: "2px solid $gray900",
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$white",
+  fontWeight: "$regular",
+  resize: "vertical",
+  minHeight: 80,
+  "&:focus": {
+    outline: 0,
+    borderColor: "$ignite300"
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  },
+  "&:placeholder": {
+    color: "$gray400"
+  }
+});
+TextArea.displayName = "TextArea";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  Avatar,
   Box,
+  Button,
+  Checkbox,
   Heading,
+  MultiStep,
   Text,
+  TextArea,
+  TextInput,
   config,
   createTheme,
   css,
